@@ -1,0 +1,46 @@
+[console_scripts]
+swift-manage-shard-ranges = swift.cli.manage_shard_ranges:main
+
+[paste.app_factory]
+account = swift.account.server:app_factory
+container = swift.container.server:app_factory
+mem_object = swift.obj.mem_server:app_factory
+object = swift.obj.server:app_factory
+proxy = swift.proxy.server:app_factory
+
+[paste.filter_factory]
+account_quotas = swift.common.middleware.account_quotas:filter_factory
+bulk = swift.common.middleware.bulk:filter_factory
+catch_errors = swift.common.middleware.catch_errors:filter_factory
+cname_lookup = swift.common.middleware.cname_lookup:filter_factory
+container_quotas = swift.common.middleware.container_quotas:filter_factory
+container_sync = swift.common.middleware.container_sync:filter_factory
+copy = swift.common.middleware.copy:filter_factory
+crossdomain = swift.common.middleware.crossdomain:filter_factory
+dlo = swift.common.middleware.dlo:filter_factory
+domain_remap = swift.common.middleware.domain_remap:filter_factory
+encryption = swift.common.middleware.crypto:filter_factory
+formpost = swift.common.middleware.formpost:filter_factory
+gatekeeper = swift.common.middleware.gatekeeper:filter_factory
+healthcheck = swift.common.middleware.healthcheck:filter_factory
+keymaster = swift.common.middleware.crypto.keymaster:filter_factory
+keystoneauth = swift.common.middleware.keystoneauth:filter_factory
+kms_keymaster = swift.common.middleware.crypto.kms_keymaster:filter_factory
+list_endpoints = swift.common.middleware.list_endpoints:filter_factory
+listing_formats = swift.common.middleware.listing_formats:filter_factory
+memcache = swift.common.middleware.memcache:filter_factory
+name_check = swift.common.middleware.name_check:filter_factory
+proxy_logging = swift.common.middleware.proxy_logging:filter_factory
+ratelimit = swift.common.middleware.ratelimit:filter_factory
+read_only = swift.common.middleware.read_only:filter_factory
+recon = swift.common.middleware.recon:filter_factory
+s3api = swift.common.middleware.s3api.s3api:filter_factory
+s3token = swift.common.middleware.s3api.s3token:filter_factory
+slo = swift.common.middleware.slo:filter_factory
+staticweb = swift.common.middleware.staticweb:filter_factory
+symlink = swift.common.middleware.symlink:filter_factory
+tempauth = swift.common.middleware.tempauth:filter_factory
+tempurl = swift.common.middleware.tempurl:filter_factory
+versioned_writes = swift.common.middleware.versioned_writes:filter_factory
+xprofile = swift.common.middleware.xprofile:filter_factory
+
