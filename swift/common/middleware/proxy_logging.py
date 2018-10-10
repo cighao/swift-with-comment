@@ -276,7 +276,7 @@ class ProxyLoggingMiddleware(object):
             return ret_status_int
 
         def iter_response(iterable):
-            iterator = iter(iterable)
+            iterator = iter(iterable) #获取可迭代对象的迭代器
             try:
                 chunk = next(iterator)
                 while not chunk:

@@ -1079,14 +1079,14 @@ def run_wsgi(conf_path, app_section, *args, **kwargs):
     while running_context[0]:
         for sock, sock_info in strategy.new_worker_socks():
             pid = os.fork()
-            if pid == 0:
+            if pid == 0:   # in child process
                 signal.signal(signal.SIGHUP, signal.SIG_DFL)
                 signal.signal(signal.SIGTERM, signal.SIG_DFL)
                 strategy.post_fork_hook()
                 run_server(conf, logger, sock)
                 strategy.log_sock_exit(sock, sock_info)
                 return 0
-            else:
+            else:  # in parent process
                 strategy.register_worker_start(sock, sock_info, pid)
 
         # The strategy may need to pay attention to something in addition to
