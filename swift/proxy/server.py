@@ -488,6 +488,7 @@ class Application(object):
                 # 根据 path获取相应的 controller, 如：
                 # 1. AccountController.  2. ContainerController
                 # 3. ECObjectController  4. ReplicatedObjectController
+                # 5. InfoController
                 # path_parts is a dict : (version=version,
                 #                  account_name=account,
                 #                  container_name=container,

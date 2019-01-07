@@ -249,6 +249,7 @@ class BaseObjectController(Controller):
                 return aresp
         partition = obj_ring.get_part(
             self.account_name, self.container_name, self.object_name)
+        # node_iter 除了包含保存object的几个节点外，还包含其他节点 get_more_nodes()
         node_iter = self.app.iter_nodes(obj_ring, partition, policy=policy)
 
         resp = self._get_or_head_response(req, node_iter, partition, policy)

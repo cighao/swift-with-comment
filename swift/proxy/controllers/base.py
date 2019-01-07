@@ -1167,7 +1167,7 @@ class ResumingGetter(object):
             return False
         if self.is_good_source(possible_source):
             # 404 if we know we don't have a synced copy
-            if not float(possible_source.getheader('X-PUT-Timestamp', 1)): # float()函数用于将整数和字符串转换成浮点数
+            if not float(possible_source.getheader('X-PUT-Timestamp', 1)):
                 self.statuses.append(HTTP_NOT_FOUND)
                 self.reasons.append('')
                 self.bodies.append('')
@@ -1252,6 +1252,7 @@ class ResumingGetter(object):
 
         pile = GreenAsyncPile(self.concurrency)
 
+        # 依次遍历 nodes 中的节点，如果在 _timeout 时间内有返回，则直接退出遍历
         for node in nodes:
             # 将 _make_node_request () 的返回值放入到 pile._responses 中
             pile.spawn(self._make_node_request, node, node_timeout,
